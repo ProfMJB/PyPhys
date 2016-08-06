@@ -1,17 +1,17 @@
 class Particle():
     def __init__(self,x,y,size,velocityx,velocityy,density=1,colour=(255,255,255)):
-        self.x = x
-        self.y = y
+        self.x = float(x)
+        self.y = float(y)
         self.size = size
-        self.vx = velocityx
-        self.vy = velocityy
+        self.vx = float(velocityx)
+        self.vy = float(velocityy)
         self.colour = colour
-        self.density = density
+        self.density = float(density)
         self.mass = density * size * size
         
     def updatePos(self,isFloor,floorHeight,gravity,air,tick):
         Fy = -(self.mass * gravity) + (self.size * self.vy * air * -1)
-        Fx = (self.size * self.vx * air * -1)
+        Fx = self.size * self.vx * air * -1
         self.vx += (Fx / self.mass) / tick
         self.vy += (Fy / self.mass) / tick
         self.x += self.vx
